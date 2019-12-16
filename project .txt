@@ -1,0 +1,80 @@
+//LEX and YACC program
+
+LEX file:
+
+%{
+
+#include<stdio.h>
+
+#include<stdlib.h>
+
+#include "y.tab.h"
+
+%}
+
+int yywrap()
+
+{
+
+return 1;
+
+}
+
+YACC file:
+
+%{
+
+#include<stdio.h>
+
+int valid=1;
+
+%}
+
+Here type the given question as given above
+
+int yyerror()
+{
+
+printf("error");
+
+valid=0;
+
+return 0;
+
+}
+
+int main()
+
+{
+
+int n;
+
+printf("Enter the number of expression:");
+
+scanf("%d",&n);
+
+int a[n];
+
+printf("Enter the arithmetic expression:");
+
+for(int i=0;i<n;i++)
+
+{
+
+a[i]=yyparse();
+
+}
+
+for(int i=0;i<n;i++)
+
+{
+
+if(valid){
+
+printf(a[i]"\n");
+
+}
+
+}
+
+}
